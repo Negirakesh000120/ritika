@@ -1,0 +1,31 @@
+/* Increase line height for hero heading to prevent letter overlapping */
+.hero-heading {
+  line-height: 8.0;
+}
+
+/* Reduce vertical spacing for hero heading in hero section */
+.hero-bottom .hero-heading {
+  line-height: .8;
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+/* Slightly tighten space below the top divider line in hero */
+.hero-bottom .line-top {
+  margin-bottom: 0.05rem;
+}
+
+/* Ensure Work section images fit inside containers without cropping */
+#work .case-image-wrap .parallax-image,
+#work .case-cover-image-wrapper .parallax-image,
+#work .case-images-wrapper .parallax-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Allow full image to be visible inside wrappers */
+#work .case-image-wrap {
+  overflow: visible;
+}
