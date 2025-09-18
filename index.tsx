@@ -13,6 +13,11 @@ async function loadComponents() {
             try {
                 const response = await fetch(path);
                 if (!response.ok) {
+                    if (response.status === 404) {
+                        console.error(`Component not found: ${path}`);
+                        placeholder.innerHTML = `<p style="color:red;">Error: Component not found (${path})</p>`;
+                        return;
+                    }
                     throw new Error(`Failed to fetch ${path}: ${response.statusText}`);
                 }
                 const html = await response.text();
@@ -23,7 +28,7 @@ async function loadComponents() {
                 placeholder.replaceWith(...tempDiv.childNodes);
             } catch (error) {
                 console.error(`Error loading component: ${path}`, error);
-                placeholder.innerHTML = `<p style="color:red;">Error loading content.</p>`;
+                placeholder.innerHTML = `<p style="color:red;">Error loading content: ${error.message}</p>`;
             }
         }
     });
